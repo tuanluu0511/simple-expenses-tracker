@@ -7,6 +7,13 @@ import React, { useState } from 'react';
 function Expenses(props) {
   const expenses = props.expenses;
   const [filteredYear, setFilteredYear] = useState('2020');
+  const expensesSub = expenses.filter(
+    (exp) => exp.date.getFullYear().toString() === filteredYear
+  );
+
+  let expenseContent = <p>No expenses found</p>;
+  if (expensesSub.length > 1)
+    expenseContent = expensesSub.map((exp) => generateExpense(exp));
 
   function generateExpense(expenses) {
     return (
@@ -19,6 +26,7 @@ function Expenses(props) {
     );
   }
 
+  //Listen to year filter event
   const filterChangeHandler = (selectedYear) => {
     setFilteredYear(selectedYear);
   };
@@ -30,9 +38,7 @@ function Expenses(props) {
           selected={filteredYear}
           onChangeFilter={filterChangeHandler}
         />
-        {expenses.map((exp) => {
-          return generateExpense(exp);
-        })}
+        {expenseContent}
       </Card>
     </div>
   );

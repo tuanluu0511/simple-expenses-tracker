@@ -25,6 +25,7 @@ const INITIAL_EXPENSES = [
 ];
 
 function App() {
+  
   const [expenses, setExpenses] = useState(INITIAL_EXPENSES);
 
   const addExpenseHandler = (expense) => {
