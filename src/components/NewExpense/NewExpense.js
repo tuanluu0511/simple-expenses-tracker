@@ -1,7 +1,6 @@
 import ExpenseForm from './ExpenseForm';
 import { useState } from 'react';
 import './NewExpense.css';
-import { flatMap } from 'lodash-es';
 
 const NewExpense = (props) => {
   const [isEditing, setIsEditing] = useState(false);
